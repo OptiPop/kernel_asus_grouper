@@ -958,7 +958,7 @@ static int __init init_core_cap_one(struct clk *c, unsigned long *freqs)
 
 			next_v = tegra_dvfs_predict_millivolts(
 				c->parent, next_rate);
-			if (IS_ERR_VALUE(next_rate)) {
+			if (IS_ERR_VALUE(next_v)) {
 				pr_debug("tegra3_dvfs: failed to predict %s mV"
 					 " for rate %lu", c->name, next_rate);
 				return -EINVAL;
