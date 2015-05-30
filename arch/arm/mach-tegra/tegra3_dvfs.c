@@ -330,8 +330,8 @@ static struct dvfs core_dvfs_table[] = {
 	CORE_DVFS("tvdac", -1, 1, KHZ,        1, 220000, 220000, 220000, 220000, 220000,  220000,   220000,  220000),
 	CORE_DVFS("tvo",   -1, 1, KHZ,        1,      1, 297000, 297000, 297000, 297000,  297000,   297000,  297000),
 	CORE_DVFS("cve",   -1, 1, KHZ,        1,      1, 297000, 297000, 297000, 297000,  297000,   297000,  297000),
-	CORE_DVFS("dsia",  -1, 1, KHZ,        1, 275000, 275000, 275000, 275000, 275000,  275000,   275000,  275000),
-	CORE_DVFS("dsib",  -1, 1, KHZ,        1, 275000, 275000, 275000, 275000, 275000,  275000,   275000,  275000),
+	CORE_DVFS("dsia",  -1, 1, KHZ,   432500, 432500, 432500, 432500, 432500, 432500,  432500,   432500,  432500),
+	CORE_DVFS("dsib",  -1, 1, KHZ,   432500, 432500, 432500, 432500, 432500, 432500,  432500,   432500,  432500),
 	CORE_DVFS("hdmi",  -1, 1, KHZ,        1, 148500, 148500, 148500, 148500, 148500,  148500,   148500,  148500),
 
 	/*
@@ -958,7 +958,7 @@ static int __init init_core_cap_one(struct clk *c, unsigned long *freqs)
 
 			next_v = tegra_dvfs_predict_millivolts(
 				c->parent, next_rate);
-			if (IS_ERR_VALUE(next_rate)) {
+			if (IS_ERR_VALUE(next_v)) {
 				pr_debug("tegra3_dvfs: failed to predict %s mV"
 					 " for rate %lu", c->name, next_rate);
 				return -EINVAL;
